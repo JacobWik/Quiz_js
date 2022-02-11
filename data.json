@@ -1,0 +1,44 @@
+{
+  "Questions": [
+    {
+      "Quiz": "Q.1) Despite its name, what is actually Bombay Duck?",
+      "option1": "A Duck",
+      "option2": "A Hockey Team",
+      "option3": "A Fish",
+      "option4": "A Fried root vegetable",
+      "answer": "A Fish"
+    },
+    {
+      "Quiz": "Q.2) What is the rarest M&M color?",
+      "option1": "Yellow",
+      "option2": "Red",
+      "option3": "Green",
+      "option4": "Brown",
+      "answer": "Brown"
+    },
+    {
+      "Quiz": "Q.3) Which Country consumes the most chocolate per capita?",
+      "option1": "Switzerland",
+      "option2": "Canada",
+      "option3": "China",
+      "option4": "Sweden",
+      "answer": "Switzerland"
+    },
+    {
+      "Quiz": "Q.4) What was the first soft drink in space?",
+      "option1": "Pepsi",
+      "option2": "Fanta",
+      "option3": "Coca Cola",
+      "option4": "Sprite",
+      "answer": "Coca Cola"
+    },
+    {
+      "Quiz": "Q.5) Which Country Invented Ice Cream",
+      "option1": "England",
+      "option2": "Canada",
+      "option3": "China",
+      "option4": "Sweden",
+      "answer": "China"
+    }
+  ]
+}
