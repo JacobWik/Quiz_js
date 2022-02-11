@@ -1,9 +1,10 @@
-
+// @Author: Jacob Wik 
     // Variables
 
-    var count = 0;
-    var marks = 0;
-    var answer = [];
+    var count = 0; // which question the player is at
+    var marks = 0; // amount of points the player has
+    var correctAnswer = []; // the correct answer for each question (is collected from the json when finished is pressed)
+    var answer = []; // array that collects the answer from the user.
 
     //    Main Ready funtion
 
@@ -12,6 +13,7 @@
         $('#finish').hide();
         $('#Result').hide();
         $('#restartButton').hide();
+        $('#footer').hide();
 
         buttons_manager();
 
@@ -33,7 +35,7 @@
             }
         }
 
-        // Create Question Function
+        // Generates the question from the json data
         function adding_Questions(data, i) {
             $('#question').text(data[i].Quiz)
             $('#options1').text(data[i].option1)
@@ -44,7 +46,6 @@
 
         }
 
-        // Answer Selection Function
 
         function selected_Answer() {
             for (var i = 0; i < 4; i++) {
@@ -61,24 +62,21 @@
         function creating_result(data) {
             for (var i = 0; i < answer.length; i++) {
                 if (answer[i] == data.Questions[i].answer) {
-
-                    marks += 5;
+                    marks += 1;
                 }
+                correctAnswer[i] = " " + data.Questions[i].answer + " ";
             }
-            console.log(answer)
             $('#main').hide();
-
-            $("#marks").text(marks);
-            $('#correct_answer').text(marks / 5);
-            $('#percentage').text((marks / 25) * 100 + "%");
+            $('#arrayOfUserAnswers').text("Your Answers: " + answer);
+            $('#arrayOfCorrectAnswers').text("Correct Answers: " + correctAnswer);
+            $('#correct_answer').text(marks + " ");
+            $('#percentage').text((marks / 5) * 100 + "%");
 
             $("#Result").show();
         }
         $("#options").hide();
 
-        // Attach API
-
-        fetch('data.json')
+        fetch('data.json') // fetches the information from the json file
             .then(function (response) {
                 return response.json();
             })
@@ -90,6 +88,7 @@
                     $('.start_page').hide();
                     $('#prev').hide();
                     $('.start').hide();
+                    $('#footer').show();
                 });
 
                 // Select Option
