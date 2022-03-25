@@ -28,6 +28,9 @@
 
         </div>
         <div class="restart">
+            <button  class="button-53" role="button" id="highscoreButton" onclick="window.open('/highscores.html')" >
+                <h2>High Scores</h2>
+            </button>
             <button class="button-53" role="button" id="restartButton">
                 <h2>Restart</h2>
             </button>
@@ -62,6 +65,17 @@
             <h3 > <span id="correct_answer">1</span> , Correct out of 5</h3>
             <h3 >Result : <span id="percentage">100%</span></h3>
         </div>
+
+        <div id="submitResultContainer">
+            <div id="end" class="flex-center flex-column">
+                <form class="end-form-container">
+                    <h2 id="end-text">Enter your name below to save your score!</h2>
+                    <input type="text" name="name" id="username" placeholder="Enter your name">
+                    <button class="btn" id="saveScoreBtn" type="submit" onclick="saveHighScore(event)" disabled>Save</button>
+                </form>
+            </div>
+        </div>
+
 
 	</div>
 </body>

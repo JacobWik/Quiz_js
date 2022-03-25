@@ -24,6 +24,7 @@ body {
 
 .start,
 .restart,
+.highscoreButton,
 #Result {
   display: flex;
   padding: 20px;

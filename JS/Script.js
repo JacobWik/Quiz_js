@@ -5,6 +5,12 @@
     var marks = 0; // amount of points the player has
     var correctAnswer = []; // the correct answer for each question (is collected from the json when finished is pressed)
     var answer = []; // array that collects the answer from the user.
+    const username = document.querySelector('#username');
+    const highScores = JSON.parse(localStorage.getItem('highScores')) || []
+    const saveScoreBtn = document.querySelector('#saveScoreBtn')
+
+    let mostRecentScore = 0;
+
 
     //    Main Ready funtion
 
@@ -12,8 +18,10 @@
         console.log("external js loaded");
         $('#finish').hide();
         $('#Result').hide();
+        $('#highscoreButton').hide();
         $('#restartButton').hide();
         $('#footer').hide();
+        $('#submitResultContainer').hide();
 
         buttons_manager();
 
@@ -33,6 +41,35 @@
             else {
                 $('#prev').hide();
             }
+        }
+
+        
+        // Submit score button disabled if the username form is not filled out
+        username.addEventListener('keyup', () => {
+            saveScoreBtn.disabled = !username.value
+        })
+                
+        saveHighScore = e => {
+            e.preventDefault()
+
+            const score = {
+                score: mostRecentScore,
+                name: username.value
+            }
+
+            highScores.push(score)
+
+            highScores.sort((a,b) => {
+                return b.score - a.score
+            })
+
+            highScores.splice(5)
+
+            localStorage.setItem('highScores', JSON.stringify(highScores));
+            window.open('/highscores.html');
+            window.location.assign('/');
+
+            
         }
 
         // Generates the question from the json data
@@ -71,9 +108,12 @@
             $('#arrayOfCorrectAnswers').text("Correct Answers: " + correctAnswer);
             $('#correct_answer').text(marks + " ");
             $('#percentage').text((marks / 5) * 100 + "%");
+            mostRecentScore= marks;
 
             $("#Result").show();
         }
+
+
         $("#options").hide();
 
         fetch('data.json') // fetches the information from the json file
@@ -134,6 +174,9 @@
                     else {
                         creating_result(data);
                         $('#restartButton').show();
+                        $('#highscoreButton').show();
+                        $('#submitResultContainer').show();
+                        
                     }
                 });
 
