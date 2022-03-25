@@ -52,21 +52,27 @@
         saveHighScore = e => {
             e.preventDefault()
 
+            //creates an object with the current score and username
             const score = {
                 score: mostRecentScore,
                 name: username.value
             }
 
+            //adds the current score to the array
             highScores.push(score)
 
+            //sorts the array, highest score to lowest
             highScores.sort((a,b) => {
                 return b.score - a.score
             })
 
-            highScores.splice(5)
+            //sets size of the array, removes or adds spots accordingly
+            highScores.splice(6)
 
             localStorage.setItem('highScores', JSON.stringify(highScores));
+            //open new tab with the highscores
             window.open('/highscores.html');
+            // reset the game
             window.location.assign('/');
 
             
